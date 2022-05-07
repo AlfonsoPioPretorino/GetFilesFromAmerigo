@@ -1,8 +1,7 @@
 import urllib.request
 from urllib.request import urlopen
 import requests
-import sys
-import io
+import os
 from bs4 import BeautifulSoup
 from sys import stdout
 from tqdm import tqdm
@@ -51,32 +50,48 @@ def startDownload(url, path):
 
 print("╔═════════════════════════════════════════════════════════════════════════════════╗")
 print("║░░░░░░░░░░░░░░░░░░░░░░░░░░░GET FILES FORM AMERIGO░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║")
-print("║                                By Fonzi-Lab                                     ║")
+print("║                                   v0.4.1                                        ║")
+print("║                                 By Fonzi-Lab                                    ║")
 print("║                     GitHub: https://github.com/Fonzi-Lab                        ║")
 print("╚═════════════════════════════════════════════════════════════════════════════════╝")
 
-url = input("Inserire URL Target. Inserire 0 per usare quello di default.\n")
+flag = 0
 
-if url == 0:
-    url = 'http://192.168.1.15:8080'
-else:
-    url = 'http://'+ url
-print("Scegliere la cartella in cui si desidera salvare i file")
-path = choosePath()
-start = int(input("Inserire 1 per avviare.\nInserire 0 per uscire.\n"))
+while flag == 0:
+    url = input("Inserire URL Target. Inserire 0 per usare quello di default.\n")
+    if url == 0:
+        url = 'http://192.168.1.15:8080'
+    else:
+        url = 'http://'+ url
+    print("Scegliere la cartella in cui si desidera salvare i file")
+    path = choosePath()
+    start = int(input("Inserire 1 per avviare.\nInserire 0 per uscire.\n"))
 
 
-if start == 1:
-    startDownload(url, path)
-    print("╔═════════════════════════════════════════════════════════════════════════════════╗")
-    print("║                      Download terminato con successo.                           ║")
-    print("║                        Premi un tasto per chiudere...                           ║")
-    print("╚═════════════════════════════════════════════════════════════════════════════════╝")
-    
-else:
-    print("╔═════════════════════════════════════════════════════════════════════════════════╗")
-    print("║                      Download annullato con successo.                           ║")
-    print("║                        Premi un tasto per chiudere...                           ║")
-    print("╚═════════════════════════════════════════════════════════════════════════════════╝")
-    
+    if start == 1:
+        try:
+            startDownload(url, path)
+            print("╔═════════════════════════════════════════════════════════════════════════════════╗")
+            print("║                      Download terminato con successo.                           ║")
+            print("║                        Premi un tasto per chiudere...                           ║")
+            print("╚═════════════════════════════════════════════════════════════════════════════════╝")
+            flag = 1
+        except:
+            print("╔═════════════════════════════════════════════════════════════════════════════════╗")
+            print("║         Ops! Qualcosa è andato storto. L'IP e' errato o la connessione          ║")
+            print("║                          di Amerigo e' stata chiusa.                            ║")
+            print("║        Se l'indirizzo inserito in precedenza e' corretto, riavviare l'          ║") 
+            print("║                     applicazione sul cellulare e riprovare.                     ║")
+            print("║                        Premi un tasto per riprovare...                          ║")
+            print("╚═════════════════════════════════════════════════════════════════════════════════╝")
+            input()
+            os.system('cls')
+            
+    else:
+        print("╔═════════════════════════════════════════════════════════════════════════════════╗")
+        print("║                      Download annullato con successo.                           ║")
+        print("║                        Premi un tasto per chiudere...                           ║")
+        print("╚═════════════════════════════════════════════════════════════════════════════════╝")
+        flag = 1
+      
 input()
