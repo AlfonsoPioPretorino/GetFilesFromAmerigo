@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from sys import stdout
 from tqdm import tqdm
 from tkinter import Tk, filedialog
-
+import uiConsoleMess as mx
 
 
 class DownloadProgressBar(tqdm):
@@ -30,9 +30,6 @@ def startDownload(url, path):
     index = 1
     reqs = requests.get(url, stream=True)
     soup = BeautifulSoup(reqs.text, 'html.parser')
-    
-    urls = []
-
     print('--------------------------------------------------------')
     for link in soup.find_all('a'):
         if "javascript" not in link.get('href') and "iTunes" not in link.get('href') and "#" not in link.get('href'):
@@ -42,27 +39,21 @@ def startDownload(url, path):
                 continue
             urlDownload = url+currentLink
             filePath = path+currentLink
-            download_url(urlDownload, filePath)
-            
-                        
+            download_url(urlDownload, filePath)             
             index += 1
 
 
-print("╔═════════════════════════════════════════════════════════════════════════════════╗")
-print("║░░░░░░░░░░░░░░░░░░░░░░░░░░░GET FILES FORM AMERIGO░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║")
-print("║                                   v0.4.1                                        ║")
-print("║                                 By Fonzi-Lab                                    ║")
-print("║                     GitHub: https://github.com/Fonzi-Lab                        ║")
-print("╚═════════════════════════════════════════════════════════════════════════════════╝")
+
 
 flag = 0
+mx.printWelcome()
 
 while flag == 0:
     url = input("Inserire URL Target. Inserire 0 per usare quello di default.\n")
     if url == 0:
         url = 'http://192.168.1.15:8080'
     else:
-        url = 'http://'+ url
+        url = 'http://'+ url + ":8080"
     print("Scegliere la cartella in cui si desidera salvare i file")
     path = choosePath()
     start = int(input("Inserire 1 per avviare.\nInserire 0 per uscire.\n"))
@@ -71,27 +62,15 @@ while flag == 0:
     if start == 1:
         try:
             startDownload(url, path)
-            print("╔═════════════════════════════════════════════════════════════════════════════════╗")
-            print("║                      Download terminato con successo.                           ║")
-            print("║                        Premi un tasto per chiudere...                           ║")
-            print("╚═════════════════════════════════════════════════════════════════════════════════╝")
+            mx.workFinished()
             flag = 1
         except:
-            print("╔═════════════════════════════════════════════════════════════════════════════════╗")
-            print("║         Ops! Qualcosa è andato storto. L'IP e' errato o la connessione          ║")
-            print("║                          di Amerigo e' stata chiusa.                            ║")
-            print("║        Se l'indirizzo inserito in precedenza e' corretto, riavviare l'          ║") 
-            print("║                     applicazione sul cellulare e riprovare.                     ║")
-            print("║                        Premi un tasto per riprovare...                          ║")
-            print("╚═════════════════════════════════════════════════════════════════════════════════╝")
+            mx.ipErr()
             input()
             os.system('cls')
             
     else:
-        print("╔═════════════════════════════════════════════════════════════════════════════════╗")
-        print("║                      Download annullato con successo.                           ║")
-        print("║                        Premi un tasto per chiudere...                           ║")
-        print("╚═════════════════════════════════════════════════════════════════════════════════╝")
+        mx.downloadCaneled()
         flag = 1
       
 input()
