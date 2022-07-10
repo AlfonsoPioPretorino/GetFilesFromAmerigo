@@ -1,6 +1,6 @@
 # GetFilesFromAmerigo
 
-A quick and easy console application to download all of your files that are stored on [Amerigo app](https://www.amerigo-app.com/).
+A quick and easy console application to download all your files that are stored on [Amerigo app](https://www.amerigo-app.com/).
 It consists in a console-based app that it is using the "Web server" feature that is provided by Amerigo.
 
 Through a few steps, you will be able to download or visualize all your data stored on Amerigo.
