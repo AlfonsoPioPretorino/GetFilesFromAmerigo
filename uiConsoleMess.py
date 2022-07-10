@@ -77,7 +77,8 @@ def help():
     ║          1) /help: Mostra la lista completa dei comandi eseguibili con una      ║
     ║                              piccola descrizione;                               ║
     ║                                                                                 ║
-    ║        2) /nav: Permette di navigare nelle cartelle presenti sul dispositivo;   ║
+    ║           2) /nav [nomecartella]: Permette di navigare nelle cartelle           ║
+    ║                             presenti sul dispositivo;                           ║
     ║                                                                                 ║
     ║ 3) /download [nomefile]: Se il nome viene specificato, il programma scaricherà  ║
     ║                 esclusivamente il file con il nome specificato.                 ║
