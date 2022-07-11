@@ -28,7 +28,6 @@ def download_url(url, output_path):
 
 
 def startDownload(url, path, FILE_TO_DOWNLOAD):
-    print(url)
     import generalDatas
     import uiConsoleMess
     index = 1
@@ -118,7 +117,7 @@ def executeCommand(cmd, argument):
             navigateTo(generalDatas.getCurrentUrl()+argument)
     elif cmd == "/back":
         cu = generalDatas.getCurrentUrl()
-        for i in range(len(cu)-1, 0, -1):
+        for i in range(len(cu)-2, 0, -1):
             if cu[i] == "/":
                 newurl = cu[0:i+1]
                 break
