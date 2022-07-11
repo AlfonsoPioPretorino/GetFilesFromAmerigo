@@ -5,6 +5,7 @@ It consists in a console-based app that it is using the "Web server" feature tha
 
 Through a few steps, you will be able to download or visualize all your data stored on Amerigo.
 
+You can download the latest protable version from [here](https://github.com/AlfonsoPioPretorino/GetFilesFromAmerigo/releases/tag/v0.2.0-alpha).
 
 ##  Available Commands
 
