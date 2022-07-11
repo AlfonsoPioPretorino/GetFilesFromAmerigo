@@ -1,3 +1,4 @@
+from ast import arg
 from fileinput import filename
 from gettext import find
 from time import time
@@ -27,6 +28,7 @@ def download_url(url, output_path):
 
 
 def startDownload(url, path, FILE_TO_DOWNLOAD):
+    print(url)
     import generalDatas
     import uiConsoleMess
     index = 1
@@ -78,14 +80,14 @@ def navigateTo(destlink):
     import sys
     print("════════════════════════════════════════════════════════")
     generalDatas.setCurrentUrl(destlink)
-    url = generalDatas.getHomeUrl() 
+    homeurl = generalDatas.getHomeUrl() 
     try:
         reqs = requests.get(destlink, stream=True)
         navsoup = BeautifulSoup(reqs.text, 'html.parser')
-        if destlink == url:
+        if destlink == homeurl:
             print("»Posizione attuale »»» Home")
         else:
-            print("»Posizione attuale »»» 🗀 ", destlink[len(url):])
+            print("»Posizione attuale »»» 🗀 ", destlink[len(homeurl):])
         print("════════════════════════════════════════════════════════")
         lookUpForContent(navsoup)
     except:
@@ -100,7 +102,7 @@ def checkCommand(command):
         mx.commandInvalid()
     else:
         if len(commandsplitted) > 1:
-            executeCommand(commandsplitted[0], commandsplitted[1])
+            executeCommand(commandsplitted[0], command[len(commandsplitted[0])+1:])
         elif len(commandsplitted) == 1:
             executeCommand(command, " ")
 
@@ -110,7 +112,10 @@ def executeCommand(cmd, argument):
     import sys
     import time
     if cmd == "/nav":
-        navigateTo(generalDatas.getHomeUrl()+argument)
+        if argument == " ":
+            navigateTo(generalDatas.getHomeUrl())
+        else:
+            navigateTo(generalDatas.getCurrentUrl()+argument)
     elif cmd == "/back":
         cu = generalDatas.getCurrentUrl()
         for i in range(len(cu)-1, 0, -1):

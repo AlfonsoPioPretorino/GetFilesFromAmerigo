@@ -98,11 +98,12 @@ def help():
 def contentPrinter(items, CHAR_TO_USE):
     i = 0
     for item in items:
+        name = item.split("/")
         if i == 0:
-            print("┌",CHAR_TO_USE, item[1:])
+            print("┌",CHAR_TO_USE, name[len(name)-1])
         elif i+1 == len(items):
-            print("└",CHAR_TO_USE, item[1:])
+            print("└",CHAR_TO_USE, name[len(name)-1])
         else:
-            print("├",CHAR_TO_USE, item[1:])   
+            print("├",CHAR_TO_USE, name[len(name)-1])   
         i += 1
         

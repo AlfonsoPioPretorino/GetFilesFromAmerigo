@@ -9,6 +9,8 @@ def setHomeUrl(newurl):
 def setCurrentUrl(url):
     global currenturl
     currenturl = url
+    if currenturl[len(currenturl)-1] != "/":
+        currenturl += "/"
 
 def getCurrentUrl():
     global currenturl
@@ -46,7 +48,7 @@ def getIgnore():
     global ignore
     return ignore
 
-homeurl = "http://192.168.1.55:8080/"
+homeurl = ""
 currenturl = ""
 path = " "
 folders = []
