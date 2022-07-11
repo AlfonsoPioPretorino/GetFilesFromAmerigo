@@ -68,8 +68,8 @@ def lookUpForContent(soup):
                 continue
         elif "javascript" not in link.get("href") and "#" not in link.get("href"):
             content.append(link.get("href"))
-    mx.contentPrinter(folders, "🗀")
-    mx.contentPrinter(content, "🗋")
+    mx.contentPrinter(folders, "ƒ ")
+    mx.contentPrinter(content, "■ ")
     generalDatas.setFolders(folders)
     generalDatas.setContents(content)
 
