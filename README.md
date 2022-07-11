@@ -20,7 +20,7 @@ You can download the latest protable version from [here](https://github.com/Alfo
 * `/nav`: If you will not specify the folder name, it will navigate back to the "home" folder;
 * `/download {filename}`: "filename" parameter could just contain some text that _**UNIQUELY**_ identify the desired file (E.g: You want to download just the IMG_123.jpg file. If you are 100% sure that there isn't another file with the same "id", you can type `/download 123`, the app will download exactly the file you wanted to.
 
-## What I will working on
+## What I will be working on
 1. I will implement the english "version";
 1. I will implement the `/ignore` command that briefly, will allow you to ignore some files, so they will be not download;
 1. The command `/download {filename} ` will be able to contain more then one filename (E.g: `/download IMG_11.png, IMG_12.png,... `);
