@@ -21,5 +21,7 @@ Through a few steps, you will be able to download or visualize all your data sto
 
 ## What I will working on
 1. I will implement the english "version";
-1. I will implement the `/ignore` command that briefly, will allow you to ignore some files, so they will be not download.
-
+1. I will implement the `/ignore` command that briefly, will allow you to ignore some files, so they will be not download;
+1. The command `/download {filename} ` will be able to contain more then one filename (E.g: `/download IMG_11.png, IMG_12.png,... `);
+1. I will implement the `/output` to open the directory containing your downloaded files;
+1. I will implement the `/setoutputpath` to change at anytime the download folder.
